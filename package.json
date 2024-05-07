@@ -3,7 +3,7 @@
   "private": "true",
   "workspaces": ["packages/*"],
   "scripts": {
-    
+    "build": "lage build"
   },
   "devDependencies": {
     "lage": "^2.7.12",
