@@ -4,11 +4,22 @@ import { logTelemetry } from "./telemetry/index.js";
 import { arch, platform } from "os";
 import { isValidPat } from "./npmrc/is-valid-pat.js";
 import { setNpmrcPat } from "./npmrc/set-npmrc-pat.js";
+import yargs  from "yargs";
+import { hideBin }from "yargs/helpers"
+
+interface Args {
+  skipCheck?: boolean;
+  skipAuth?: boolean;
+  configFile?: string;
+}
 
 export const run = async (): Promise<null | boolean> => {
-  const doValidCheck = !process.argv.includes("--skip-check");
-  const skipAuth = process.argv.includes("--skip-auth");
-  
+  const argv = yargs(hideBin(process.argv)).argv as Args;
+
+  const doValidCheck = !argv.skipCheck
+  const skipAuth = argv.skipAuth;
+  const configFile = argv.configFile;
+
   if (doValidCheck && (await isValidPat())) {
     return null;
   }

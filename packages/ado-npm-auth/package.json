@@ -25,10 +25,12 @@
   },
   "dependencies": {
     "@npmcli/config": "^4.0.1",
+    "@types/yargs": "^17.0.32",
     "azureauth": "^0.4.5",
-    "workspace-tools": "^0.26.3"
+    "workspace-tools": "^0.26.3",
+    "yargs": "^17.7.2"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "@types/node": "^20.5.9",
     "@types/npmcli__config": "^6.0.0",
     "eslint": "^8.30.0",
@@ -36,9 +38,9 @@
     "terser-webpack-plugin": "^1.4.3",
     "tslib": "^2.2.0",
     "typescript": "^5.2.2",
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.10.0",
+    "vite": "^5.2.8",
     "vitest": "^1.5.0",
-    "vite": "^5.2.8"
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.10.0"
   }
 }
