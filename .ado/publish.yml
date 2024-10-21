@@ -135,4 +135,12 @@ extends:
 
             - script: |
                 npm run publish:beachball -- $(SkipNpmPublishArgs) $(SkipGitPushPublishArgs) --access public --token $(npmAuthToken) -y
-              displayName: Beachball Publish
+              displayName: Beachball Publish public
+
+            - script: |
+                git reset HEAD~ --hard
+              displayName: Revert the changes pushed to git so that the next publish to the azure devops public feed will do the right thing.
+
+            - script: |
+                npm run publish:beachball -- $(SkipNpmPublishArgs) --no-push --access public --token $(pat-dev-azure-com-ms-packages) --registry https://pkgs.dev.azure.com/ms/ado-npm-auth/_packaging/ado-npm-auth/npm/registry/  -y
+              displayName: Push npm packages to internal ADO feed
